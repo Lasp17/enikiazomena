@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+
+	<title>Apartment Management System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+   
+   
+	<style>
+		/* Navbar styling */
+        /* Navbar styling */
+  nav
+  {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+nav h2 {
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #efefef;
+}
+
+/*table*/
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+  }
+  
+  table th,
+  table td {
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
+  
+  table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  table thead {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
+  }
+  
+  table thead th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
+  
+  .table-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-gap: 1px;
+    border: 1px solid #ccc;
+  }
+  
+  .table-container table {
+    border: none;
+  }
+  
+  .table-container table td,
+  .table-container table th {
+    border: none;
+  }
+
+
+
+		/* Form styling */
+		form {
+			margin: 20px auto;
+			padding: 20px;
+			max-width: 600px;
+			background-color: #f2f2f2;
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+		}
+
+		label {
+			display: block;
+			margin-bottom: 8px;
+			font-weight: bold;
+		}
+
+		input[type=text], select {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+    input[type=email],select{
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+		input[type=submit] {
+			background-color: #37bd3c;
+			color: white;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		input[type=submit]:hover {
+			background-color: #1aa921;
+		}
+
+		h1 {
+			text-align: center;
+		}
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+      
+      th, td {
+        text-align: left;
+        padding: 0.5rem;
+        border-bottom: 1px solid #ddd;
+      }
+      
+      th {
+        background-color: #f2f2f2;
+      }
+      
+      /* Styles for page */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+      
+      h1 {
+        margin-top: 0;
+      }
+      
+      p {
+        margin-bottom: 1rem;
+      }
+	</style>
+</head>
+<body>
+
+
+    <!-- Navbar -->
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Apartment Complex</title>
+        <style>
+          /* Styles for the navbar */
+          .navbar-container {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px;
+          }
+    
+          .navbar-list {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0;
+          }
+    
+          .navbar-list li {
+            margin-right: 20px;
+          }
+    
+          .navbar-list li:last-child {
+            margin-right: 0;
+          }
+    
+          .navbar-list li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+          }
+    
+          .navbar-list li a:hover {
+            text-decoration: underline;
+          }
+
+          .dropdown {
+        position: relative;
+        display: inline-block;
+        margin-right: 20px;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        z-index: 1;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #0b0a0a;
+}
+
+th {
+  background-color: #007bff;
+  color: rgb(14, 13, 13);
+  font-size: 16px;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+.edit-btn {
+  background-color: #28a745;
+  color: rgb(12, 11, 11);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background-color: #218838;
+}
+
+
+
+        </style>
+      </head>
+      <head>
+        
+      </head>
+      
+      <body style = "margin:50xp">
+        
+       
+        <div class="navbar-container"></div>
+        <h1>Welcome to the Apartment Complex</h1>
+        <a href="{{ url_for('data') }}" style="display: inline-block; padding: 10px 20px; background-color: #0a0a0b; color: #fff; text-decoration: none; border-radius: 5px;">Data</a>
+
+           <div class="apartment" id="apt1">
+          <h2>First Floor</h2>
+          <form class="add-form" action="/" method="post">
+            <h2>Add Tenant</h2>
+            <label for="id">Id:</label>
+            <input type="text" id ="id">
+            <label for="name">Name:</label>
+            <input type="text" name="name" required>
+            <label for="apartment_number">Apartment Number:</label>
+            <input type="text" name="apartment_number" required>
+            <label for="square_feet">Square Feet:</label>
+            <input type="text" name="square_feet" required>
+            <label for="payment_month">Payment Month:</label>
+            <input type="text" name="payment_month" required>
+            <label for="payment_method">Payment Method:</label>
+            <select name="payment_method">
+              <option value="Bank">Bank</option>
+              <option value="Cash">Cash</option>
+              <option value="Credit Card">Credit Card</option>
+            </select>
+            <button type="submit" name="action" value="add">Add</button>
+          </form>
+          {% if rows %}
+          <table>
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Apartment Number</th>
+                <th>Square Feet</th>
+                <th>Payment Month</th>
+                <th>Payment Method</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in rows %}
+              <tr>
+                <td>{{row.id}}</td>
+                <td>{{ row.name }}</td>
+                <td>{{ row.apartment_number }}</td>
+                <td>{{ row.square_feet }}</td>
+                <td>{{ row.payment_month }}</td>
+                <td>{{ row.payment_method }}</td>
+                <td>
+                  <form class="edit-form" action="/" method="post">
+                    <input type="hidden" name="id" value="{{ row.id }}">
+                    <button type="submit" name="action" value="update">Edit</button>
+                  </form>
+                  <form class="delete-form" action="/" method="post">
+                    <input type="hidden" name="id" value="{{ row.id }}">
+                    <button type="submit" name="action" value="delete">Delete</button>
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <p>No tenants found.</p>
+          {% endif %}
+        </div>
+    
+        <body>
+          <div class="apartment" id="apt2">
+            <h2>Second Floor Apartment 1</h2>
+              <h1>Second Floor Apartment 1</h1>
+              <form class="add-form" action="/" method="post">
+                <h2>Add Tenant</h2>
+                <label for="id">Id:</label>
+                <input type="text" id ="id">
+                <label for="name">Name:</label>
+                <input type="text" name="name" required>
+                <label for="apartment_number">Apartment Number:</label>
+                <input type="text" name="apartment_number" required>
+                <label for="square_feet">Square Feet:</label>
+                <input type="text" name="square_feet" required>
+                <label for="payment_month">Payment Month:</label>
+                <input type="text" name="payment_month" required>
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" name="phone_number">
+                <label for="email">Email:</label>
+                <input type="email" name="email">
+                <label for="payment_method">Payment Method:</label>
+                <select name="payment_method">
+                  <option value="Bank">Bank</option>
+                  <option value="Cash">Cash</option>
+                  <option value="Credit Card">Credit Card</option>
+                </select>
+                <button type="submit" name="action" value="add">Add</button>
+              </form>
+              {% if rows %}
+              <table>
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Apartment Number</th>
+                    <th>Square Feet</th>
+                    <th>Payment Month</th>
+                    <th>Payment Method</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for row in rows %}
+                  <tr>
+                    <td>{{row.id}}</td>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.apartment_number }}</td>
+                    <td>{{ row.square_feet }}</td>
+                    <td>{{ row.payment_month }}</td>
+                    <td>{{ row.payment_method }}</td>
+                    <td>{{ row.phone_number }}</td>
+                    <td>{{ row.email }}</td>
+                    <td>
+                      <form class="edit-form" action="/" method="post">
+                        <input type="hidden" name="id" value="{{ row.id }}">
+                        <button type="submit" name="action" value="update">Edit</button>
+                      </form>
+                      <form class="delete-form" action="/" method="post">
+                        <input type="hidden" name="id" value="{{ row.id }}">
+                        <button type="submit" name="action" value="delete">Delete</button>
+                      </form>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              {% else %}
+              <p>No tenants found.</p>
+              {% endif %}
+            </div>
+            
+            
+             
+            <div class="apartment" id="apt3">
+              <h2>Second Floor Apartment 2</h2>
+              <h1>Second Floor Apartment 2</h1>
+              <form class="add-form" action="/" method="post">
+                <h2>Add Tenant</h2>
+                <label for="id">Id:</label>
+                <input type="text" id ="id">
+                <label for="name">Name:</label>
+                <input type="text" name="name" required>
+                <label for="apartment_number">Apartment Number:</label>
+                <input type="text" name="apartment_number" required>
+                <label for="square_feet">Square Feet:</label>
+                <input type="text" name="square_feet" required>
+                <label for="payment_month">Payment Month:</label>
+                <input type="text" name="payment_month" required>
+                <label for="phone_number">Phone Number:</label>
+                <input type="text" name="phone_number">
+                <label for="email">Email:</label>
+                <input type="email" name="email">
+                <label for="payment_method">Payment Method:</label>
+                <select name="payment_method">
+                  <option value="Bank">Bank</option>
+                  <option value="Cash">Cash</option>
+                  <option value="Credit Card">Credit Card</option>
+                </select>
+                <button type="submit" name="action" value="add">Add</button>
+              </form>
+              {% if rows %}
+              <table>
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Apartment Number</th>
+                    <th>Square Feet</th>
+                    <th>Payment Month</th>
+                    <th>Payment Method</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for row in rows %}
+                  <tr>
+                    <td>{{row.id}}</td>
+                    <td>{{ row.name }}</td>
+                    <td>{{ row.apartment_number }}</td>
+                    <td>{{ row.square_feet }}</td>
+                    <td>{{ row.payment_month }}</td>
+                    <td>{{ row.payment_method }}</td>
+                    <td>{{ row.phone_number }}</td>
+                    <td>{{ row.email }}</td>
+                    <td>
+                      <form class="edit-form" action="/" method="post">
+                        <input type="hidden" name="id" value="{{ row.id }}">
+                        <button type="submit" name="action" value="update">Edit</button>
+                      </form>
+                      <form class="delete-form" action="/" method="post">
+                        <input type="hidden" name="id" value="{{ row.id }}">
+                        <button type="submit" name="action" value="delete">Delete</button>
+                      </form>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              {% else %}
+              <p>No tenants found.</p>
+              {% endif %}
+            </div>
+            
+            
+    
+    
+    <div class="apartment" id="apt4">
+      <h2>Third Floor Apartment 1</h2>
+      <h1>Third Floor Apartment 1</h1>
+      <form class="add-form" action="/" method="post">
+        <h2>Add Tenant</h2>
+        <label for="id">Id:</label>
+        <input type="text" id ="id">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+        <label for="apartment_number">Apartment Number:</label>
+        <input type="text" name="apartment_number" required>
+        <label for="square_feet">Square Feet:</label>
+        <input type="text" name="square_feet" required>
+        <label for="payment_month">Payment Month:</label>
+        <input type="text" name="payment_month" required>
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" name="phone_number">
+        <label for="email">Email:</label>
+        <input type="email" name="email">
+        <label for="payment_method">Payment Method:</label>
+        <select name="payment_method">
+          <option value="Bank">Bank</option>
+          <option value="Cash">Cash</option>
+          <option value="Credit Card">Credit Card</option>
+        </select>
+        <button type="submit" name="action" value="add">Add</button>
+      </form>
+      {% if rows %}
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Apartment Number</th>
+            <th>Square Feet</th>
+            <th>Payment Month</th>
+            <th>Payment Method</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+          <tr>
+            <td>{{row.id}}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.apartment_number }}</td>
+            <td>{{ row.square_feet }}</td>
+            <td>{{ row.payment_month }}</td>
+            <td>{{ row.payment_method }}</td>
+            <td>{{ row.phone_number }}</td>
+            <td>{{ row.email }}</td>
+            <td>
+              <form class="edit-form" action="/" method="post">
+                <input type="hidden" name="id" value="{{ row.id }}">
+                <button type="submit" name="action" value="update">Edit</button>
+              </form>
+              <form class="delete-form" action="/" method="post">
+                <input type="hidden" name="id" value="{{ row.id }}">
+                <button type="submit" name="action" value="delete">Delete</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>No tenants found.</p>
+      {% endif %}
+    </div>
+    
+    
+    
+    <div class="apartment" id="apt5">
+      <h2>Third Floor Apartment 2</h2>
+      <h1>Third Floor Apartment 2</h1>
+      <form class="add-form" action="/" method="post">
+        <h2>Add Tenant</h2>
+        <label for="id">Id:</label>
+        <input type="text" id ="id">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+        <label for="apartment_number">Apartment Number:</label>
+        <input type="text" name="apartment_number" required>
+        <label for="square_feet">Square Feet:</label>
+        <input type="text" name="square_feet" required>
+        <label for="payment_month">Payment Month:</label>
+        <input type="text" name="payment_month" required>
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" name="phone_number">
+        <label for="email">Email:</label>
+        <input type="email" name="email">
+        <label for="payment_method">Payment Method:</label>
+        <select name="payment_method">
+          <option value="Bank">Bank</option>
+          <option value="Cash">Cash</option>
+          <option value="Credit Card">Credit Card</option>
+        </select>
+        <button type="submit" name="action" value="add">Add</button>
+      </form>
+      {% if rows %}
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Apartment Number</th>
+            <th>Square Feet</th>
+            <th>Payment Month</th>
+            <th>Payment Method</th>
+            <th>Pnone Number</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+          <tr>
+            <td>{{row.id}}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.apartment_number }}</td>
+            <td>{{ row.square_feet }}</td>
+            <td>{{ row.payment_month }}</td>
+            <td>{{ row.payment_method }}</td>
+            <td>{{ row.pnone_number }}</td>
+            <td>{{ row.email }}</td>
+            <td>
+              <form class="edit-form" action="/" method="post">
+                <input type="hidden" name="id" value="{{ row.id }}">
+                <button type="submit" name="action" value="update">Edit</button>
+              </form>
+              <form class="delete-form" action="/" method="post">
+                <input type="hidden" name="id" value="{{ row.id }}">
+                <button type="submit" name="action" value="delete">Delete</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>No tenants found.</p>
+      {% endif %}
+    </div>
+    
+    
+    <div class="apartment" id="apt6">
+      <h2>Third Floor Apartment 1</h2>
+            <h1>Fourth Floor Apartment 1</h1>
+            <form class="add-form" action="/" method="post">
+              <h2>Add Tenant</h2>
+              <label for="id">Id:</label>
+              <input type="text" id ="id">
+              <label for="name">Name:</label>
+              <input type="text" name="name" required>
+              <label for="apartment_number">Apartment Number:</label>
+              <input type="text" name="apartment_number" required>
+              <label for="square_feet">Square Feet:</label>
+              <input type="text" name="square_feet" required>
+              <label for="payment_month">Payment Month:</label>
+              <input type="text" name="payment_month" required>
+              <label for="phone_number">Phone Number:</label>
+              <input type="text" name="phone_number">
+              <label for="email">Email:</label>
+              <input type="email" name="email">
+              <label for="payment_method">Payment Method:</label>
+              <select name="payment_method">
+                <option value="Bank">Bank</option>
+                <option value="Cash">Cash</option>
+                <option value="Credit Card">Credit Card</option>
+              </select>
+              <button type="submit" name="action" value="add">Add</button>
+            </form>
+            {% if rows %}
+            <table>
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Apartment Number</th>
+                  <th>Square Feet</th>
+                  <th>Payment Month</th>
+                  <th>Payment Method</th>
+                  <th>Phone Number</th>
+                  <th>Email</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in rows %}
+                <tr>
+                  <td>{{row/id}}</td>
+                  <td>{{ row.name }}</td>
+                  <td>{{ row.apartment_number }}</td>
+                  <td>{{ row.square_feet }}</td>
+                  <td>{{ row.payment_month }}</td>
+                  <td>{{ row.payment_method }}</td>
+                  <td>{{ row.phone_number }}</td>
+                  <td>{{ row.email }}</td>
+                  <td>
+                    <form class="edit-form" action="/" method="post">
+                      <input type="hidden" name="id" value="{{ row.id }}">
+                      <button type="submit" name="action" value="update">Edit</button>
+                    </form>
+                    <form class="delete-form" action="/" method="post">
+                      <input type="hidden" name="id" value="{{ row.id }}">
+                      <button type="submit" name="action" value="delete">Delete</button>
+                    </form>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% else %}
+            <p>No tenants found.</p>
+            {% endif %}
+          </div>
+    
+          <div class="apartment" id="apt7">
+            <h2>Fourth Floor Apartment 2</h2>
+            <h1>Fourth Floor Apartment 2</h1>
+            <form class="add-form" action="/" method="post">
+              <h2>Add Tenant</h2>
+              <label for="id">Id:</label>
+              <input type="text" id ="id">
+              <label for="name">Name:</label>
+              <input type="text" name="name" required>
+              <label for="apartment_number">Apartment Number:</label>
+              <input type="text" name="apartment_number" required>
+              <label for="square_feet">Square Feet:</label>
+              <input type="text" name="square_feet" required>
+              <label for="payment_month">Payment Month:</label>
+              <input type="text" name="payment_month" required>
+              <label for="phone_number">Phone Number:</label>
+              <input type="text" name="phone_number">
+              <label for="email">Email:</label>
+              <input type="email" name="email">
+              <label for="payment_method">Payment Method:</label>
+              <select name="payment_method">
+                <option value="Bank">Bank</option>
+                <option value="Cash">Cash</option>
+                <option value="Credit Card">Credit Card</option>
+              </select>
+              <button type="submit" name="action" value="add">Add</button>
+            </form>
+            {% if rows %}
+            <table>
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Apartment Number</th>
+                  <th>Square Feet</th>
+                  <th>Payment Month</th>
+                  <th>Payment Method</th>
+                  <th>Phone Number</th>
+                  <th>Email</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in rows %}
+                <tr>
+                  <td>{{row.id}}</td>
+                  <td>{{ row.name }}</td>
+                  <td>{{ row.apartment_number }}</td>
+                  <td>{{ row.square_feet }}</td>
+                  <td>{{ row.payment_month }}</td>
+                  <td>{{ row.payment_method }}</td>
+                  <td>{{ row.phone_number }}</td>
+                  <td>{{ row.email }}</td>
+                  <td>
+                    <form class="edit-form" action="/" method="post">
+                      <input type="hidden" name="id" value="{{ row.id }}">
+                      <button type="submit" name="action" value="update">Edit</button>
+                    </form>
+                    <form class="delete-form" action="/" method="post">
+                      <input type="hidden" name="id" value="{{ row.id }}">
+                      <button type="submit" name="action" value="delete">Delete</button>
+                    </form>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% else %}
+            <p>No tenants found.</p>
+            {% endif %}
+          </div>
+
+           
+
+         
+      
+
+
+
+      
+    
+        <script>
+          function createNavbar() {
+            const navLinks = [
+              { href: '#apt1', text: 'First Floor' },
+              { href: '#apt2', text: 'Second Floor Apartment 1' },
+              { href: '#apt3', text: 'Second Floor Apartment 2' },
+              { href: '#apt4', text: 'Third Floor Apartment 1' },
+              { href: '#apt5', text: 'Third Floor Apartment 2' },
+              { href: '#apt6', text: 'Fourth Floor Apartment 1' },
+              { href: '#apt7', text: 'Fourth Floor Apartment 2' },
+            ];
+    
+            const navbar = document.createElement('nav');
+            const ul = document.createElement('ul');
+            ul.classList.add('navbar-list');
+    
+            navLinks.forEach((link) => {
+              const li = document.createElement('li');
+              const a = document.createElement('a');
+              a.setAttribute('href', link.href);
+    a.innerText = link.text;
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+  
+  navbar.appendChild(ul);
+  return navbar;
+}
+const navbarContainer = document.querySelector('.navbar-container');
+const navbar = createNavbar();
+navbarContainer.appendChild(navbar);
+</script>
+
+</body>
+</html>
